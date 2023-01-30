@@ -4,5 +4,5 @@
 2. Write a function to pull USD / BRL currency conversion rates every hour
 3. Print last 24 hours to a React page
 4. Include tests
-5. Include a README with how to run your application
+5. Update the README with intructions on how to run your application
 6. Push all code up to be reviewed (GitHub/GitLab)
