@@ -1,0 +1,21 @@
+{
+  "env": {
+    "development": {
+      "presets": ["next/babel"]
+    },
+    "production": {
+      "presets": ["next/babel"]
+    },
+    "test": {
+      "presets": [
+        "@babel/preset-env",
+        "@babel/react",
+        "@babel/preset-typescript",
+        "next/babel"
+      ],
+      "plugins": [
+        "react-require"
+      ]
+    }
+  }
+}

@@ -1,0 +1,17 @@
+# node files
+/node_modules/
+
+# configs
+*.config.js
+next-env.d.ts
+
+# unit-test
+coverage/*
+
+# storybook
+storybook-static
+**/storybook-static
+
+# Build Output
+dist/
+.next/
