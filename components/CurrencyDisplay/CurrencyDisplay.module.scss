@@ -1,0 +1,19 @@
+.CurrencyDisplay {
+  display: flex;
+  flex-direction: column;
+
+  &> div {
+    width: 250px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    &:first-child {
+      border-bottom: 1px solid black;
+    }
+
+    &:last-child {
+      justify-content: space-between;
+    }
+  }
+}
