@@ -6,3 +6,7 @@ export const formatCurrency = (amount: number, currency: SupportedCurrencies) =>
     maximumFractionDigits: 2
   }).format(amount)
 }
+
+export const formatTimestamp = (date: Date) => {
+  return `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`
+}

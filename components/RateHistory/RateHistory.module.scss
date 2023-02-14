@@ -1,0 +1,49 @@
+.RateHistory {
+  position: relative;
+
+  max-width: 350px;
+
+  .title {
+    text-align: center;
+    text-decoration: underline;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  .RateRecord {
+    width: 100%;
+
+    padding: .5rem;
+    margin: 2rem 0;
+
+    display: flex;
+    flex-direction: column;
+
+    border: 1px solid black;
+    border-radius: 5px;
+
+    text-align: left;
+
+    .currencies {
+      display: flex;
+      justify-content: space-between;
+
+      padding: .5rem 1rem;
+
+      & > div {
+        font-size: 1.25rem;
+
+        b {
+          font-size: 1rem;
+        }
+      }
+    }
+
+    .rate {
+      text-align: center;
+    }
+  }
+}

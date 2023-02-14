@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { formatTimestamp } from '../../utils';
 import styles from './UpdateRequester.module.scss';
 import cx from 'classnames';
 
@@ -34,7 +35,7 @@ function UpdateRequester({
         </div>
       </span>
       <span>
-      &nbsp;last Update: {latestTimestamp.toLocaleDateString()}&nbsp;{latestTimestamp.toLocaleTimeString()}
+      &nbsp;last Update: {formatTimestamp(latestTimestamp)}
       </span>
     </div>
   )

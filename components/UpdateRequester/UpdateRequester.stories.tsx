@@ -1,4 +1,5 @@
 import UpdateRequestor from './UpdateRequester';
+import { formatTimestamp } from '../../utils';
 import { action } from '@storybook/addon-actions';
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
 
@@ -12,7 +13,7 @@ export default {
   },
   args: {
     onRequestUpdate: (timestamp: Date) => {
-      action(`Requested Refresh ${timestamp.toLocaleString}`)
+      action(`Requested Refresh ${formatTimestamp(timestamp)}`)
     }
   }
 } as ComponentMeta<typeof UpdateRequestor>;

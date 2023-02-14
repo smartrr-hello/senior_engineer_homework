@@ -43,3 +43,16 @@ interface CurrencyConversionResponse {
   /** The last update made to this conversion rate. */
   updated_data: string;
 }
+
+interface HistoricalRecord {
+  /** The base currency that was converted */
+  baseCurrency: SupportedCurrencies;
+  /** The amount converted */
+  amount: string;
+  /** The symbol of the converted currency. */
+  currencyConverted: SupportedCurrencies;
+  /** The rate converted to. */
+  rate: ConvertedRate;
+  /** The ISO timestamp of when this record was created */
+  timestamp: string;
+}
