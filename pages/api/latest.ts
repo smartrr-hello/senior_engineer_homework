@@ -13,7 +13,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   });
 
   const recorder = new RecordKeeper(req, res);
-  const timestamp = time ? new Date(time as string) : new Date();
+  const timestamp = typeof time === 'string' ? new Date(parseInt(time as string)) : new Date();
 
   recorder.add(response, 'BRL', timestamp)
   const { rates } = response

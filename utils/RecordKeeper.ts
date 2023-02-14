@@ -4,15 +4,7 @@ import { setCookie, parseCookies } from 'nookies'
 const COOKIE_NAME = 'RECORD_HISTORY';
 const COOKIE_PATH = '/';
 const ONE_WEEK = 7 * 24 * 60 * 60;
-
-// interface RecordKeeperI {
-//   res?: NextApiResponse | GetServerSidePropsContext['res']
-//   data: HistoricalRecord[]
-
-//   constructor();
-//   constructor(req: NextApiRequest | GetServerSidePropsContext['req'], res: NextApiResponse | GetServerSidePropsContext['res'])
-// }
-
+const ONE_DAY_IN_MS = 1000 * 60 * 60 * 24;
 export default class RecordKeeper {
   res?: NextApiResponse | GetServerSidePropsContext['res'];
   data: HistoricalRecord[];
@@ -57,9 +49,18 @@ export default class RecordKeeper {
   }
 
   save() {
+    const oneDayAgo = new Date().getTime() - ONE_DAY_IN_MS;
+
+    // Filter out historical records older than a day.
+    const newData = this.data.filter(({ timestamp }) => {
+        return new Date(timestamp).getTime() >= oneDayAgo;
+    })
+
     if (this.res)
-      setCookie({ res: this.res }, COOKIE_NAME, JSON.stringify(this.data), { path: COOKIE_PATH, maxAge: ONE_WEEK });
+      setCookie({ res: this.res }, COOKIE_NAME, JSON.stringify(newData), { path: COOKIE_PATH, maxAge: ONE_WEEK });
     else
-      setCookie(undefined, COOKIE_NAME, JSON.stringify(this.data), { path: COOKIE_PATH, maxAge: ONE_WEEK });
+      setCookie(undefined, COOKIE_NAME, JSON.stringify(newData), { path: COOKIE_PATH, maxAge: ONE_WEEK });
+
+    this.data = newData;
   }
 }

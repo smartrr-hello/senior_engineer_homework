@@ -7,26 +7,23 @@ import fetch from 'node-fetch';
 import { RecordKeeper } from '../utils';
 import CurrencyDisplay from '../components/CurrencyDisplay';
 import RateHistory from '../components/RateHistory';
+import { useInterval } from '../hooks';
 import styles from '../styles/Home.module.scss'
+
+const ONE_HOUR_IN_MS = 1000 * 10;
 
 export async function getServerSideProps({ req, res }: GetServerSidePropsContext) {
   const response = await fetch('http://localhost:3000/api/latest');
   const rates = await response.json() as CurrencyConversionResponse['rates'];
 
-  const record = new RecordKeeper(req, res);
-
-
   return {
     props: {
-      records: record.get(),
       initRate: rates['BRL']
     }, // will be passed to the page component as props
   }
 }
 
 interface HomeProps {
-  /** Current historical record of requests pulled from cookies. */
-  records: HistoricalRecord[];
   /** The initial rate on page load. */
   initRate: ConvertedRate
 }
@@ -34,13 +31,12 @@ interface HomeProps {
 const UpdateRequester = dynamic(() => import('../components/UpdateRequester'), { ssr: false })
 
 export default function Home({
-  records,
   initRate
 }: HomeProps) {
   const [time, setTime] = useState(new Date())
   const [inFlight, setInFlight] = useState(false)
   const [latestRate, setLatestRate] = useState<ConvertedRate>(initRate);
-  const [history, setHistory] = useState<HistoricalRecord[]>([...records])
+  const [history, setHistory] = useState<HistoricalRecord[]>([])
 
   const fetchRate = async (time: Date) => {
     setInFlight(true);
@@ -58,6 +54,10 @@ export default function Home({
     setHistory([...records.get()]);
 
   }, [latestRate])
+
+  useInterval(() => {
+    fetchRate(new Date());
+  }, ONE_HOUR_IN_MS)
 
   return (
     <div className={cx(styles.Home, styles.container)}>

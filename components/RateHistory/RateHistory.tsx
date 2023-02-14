@@ -13,7 +13,7 @@ function RateHistory({
 }: RateHistoryProps) {
   return (
     <div className={styles.RateHistory}>
-      <h2 className={styles.title}>Conversion Record History</h2>
+      <h2 className={styles.title}>Conversion Record History <br/> (last 24hrs)</h2>
       <ul>
         {records.map((record) => (<RateRecord key={record.timestamp} {...record} />) )}
       </ul>
