@@ -56,6 +56,6 @@ describe('Currency Request', () => {
     expect(mockFetch).toHaveBeenCalled()
 
     const result = mock.mock.results[0]
-    expect(await result.value).toEqual(MockResponse.rates)
+    expect(await result.value).toEqual(MockResponse)
   })
 })

@@ -7,7 +7,7 @@ const headers = {
   'X-RapidAPI-Host': RAPID_API_HOST
 }
 
-export const getLatestCurrencyData = async (params: CurrencyConversionParams): Promise<CurrencyConversionResponse['rates']> => {
+export const getLatestCurrencyData = async (params: CurrencyConversionParams): Promise<CurrencyConversionResponse> => {
   const DEFAULT_PARAMS: Partial<CurrencyConversionParams> = {
     format: 'json',
     language: 'en'
@@ -26,5 +26,5 @@ export const getLatestCurrencyData = async (params: CurrencyConversionParams): P
     headers,
   })
 
-  return (await response.json() as CurrencyConversionResponse).rates;
+  return (await response.json() as CurrencyConversionResponse);
 }
