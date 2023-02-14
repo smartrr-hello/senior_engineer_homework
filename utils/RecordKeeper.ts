@@ -49,6 +49,7 @@ export default class RecordKeeper {
       baseCurrency: base_currency_code,
       amount,
       currencyConverted,
+      rate: rates[currencyConverted],
       timestamp: timestamp.toISOString()
     } as HistoricalRecord)
 

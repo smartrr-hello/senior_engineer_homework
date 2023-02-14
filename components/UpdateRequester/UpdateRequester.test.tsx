@@ -10,8 +10,8 @@ describe('UpdateRequester', () => {
 
   it('should update on click', () => {
     const mock = jest.fn()
-
-    const { container } = render(<UpdateRequester onRequestUpdate={mock} dataTestid={TEST_ID} />)
+    const time = new Date()
+    const { container } = render(<UpdateRequester onRequestUpdate={mock} dataTestid={TEST_ID} currentTime={time} />)
 
     const refreshIcon = container.querySelector('* >span input')
 
@@ -23,8 +23,8 @@ describe('UpdateRequester', () => {
 
   it('should have a rotate class if rotate prop is true', () => {
     const mock = jest.fn()
-
-    const { container } = render(<UpdateRequester onRequestUpdate={mock} dataTestid={TEST_ID} rotateIcon />)
+    const time = new Date()
+    const { container } = render(<UpdateRequester onRequestUpdate={mock} dataTestid={TEST_ID} currentTime={time} rotateIcon />)
 
     const iconWrapper = container.querySelector('* >span div')
 

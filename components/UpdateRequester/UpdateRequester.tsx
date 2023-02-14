@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { memo } from 'react';
 import { formatTimestamp } from '../../utils';
 import styles from './UpdateRequester.module.scss';
 import cx from 'classnames';
 
 interface UpdateRequesterProps {
+  /** The initial time this component was rendered */
+  currentTime: Date
   /** A callback used to request an update from the parent.  */
   onRequestUpdate: (time: Date) => void;
   /** Flag used to indicate that the refresh icon should rotate. Default is false. */
@@ -13,17 +15,14 @@ interface UpdateRequesterProps {
 }
 
 function UpdateRequester({
+  currentTime,
   onRequestUpdate,
   rotateIcon = false,
   dataTestid
 }: UpdateRequesterProps) {
-  const [latestTimestamp, setLatestTimestamp] = useState<Date>(new Date())
-
   const handleRefresh = () => {
-    const time = new Date();
-    onRequestUpdate(time)
-
-    setLatestTimestamp(time);
+    const newTime = new Date();
+    onRequestUpdate(newTime);
   }
 
   return (
@@ -35,11 +34,11 @@ function UpdateRequester({
         </div>
       </span>
       <span>
-      &nbsp;last Update: {formatTimestamp(latestTimestamp)}
+      &nbsp;last Update: {currentTime && formatTimestamp(currentTime)}
       </span>
     </div>
   )
 
 }
 
-export default UpdateRequester;
+export default memo(UpdateRequester);

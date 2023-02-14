@@ -52,12 +52,12 @@
       cursor: pointer;
     }
 
-    &:hover, &.rotate {
-      -webkit-animation: rotating 1s linear infinite;
-      -moz-animation: rotating 1s linear infinite;
-      -ms-animation: rotating 1s linear infinite;
-      -o-animation: rotating 1s linear infinite;
-      animation: rotating 1s linear infinite;
-    }
+    // &:hover, &.rotate {
+    //   -webkit-animation: rotating 1s linear infinite;
+    //   -moz-animation: rotating 1s linear infinite;
+    //   -ms-animation: rotating 1s linear infinite;
+    //   -o-animation: rotating 1s linear infinite;
+    //   animation: rotating 1s linear infinite;
+    // }
   }
 }

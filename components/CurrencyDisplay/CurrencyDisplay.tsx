@@ -9,9 +9,9 @@ export interface CurrencyDisplayProps {
   /** The resulting converted currency */
   to: SupportedCurrencies;
   /** The rate at which the currency is valued at */
-  conversionRate: number;
+  conversionRate: number | string;
   /** Amount converted. */
-  resultingAmount: number;
+  resultingAmount: number | string;
   /** An id used to target this component in testing. */
   dataTestid?: string;
 }
@@ -31,17 +31,17 @@ function CurrencyDisplay({
         &nbsp;
         <div>
           <div style={{ textAlign: 'center' }}>⇌</div>
-          <div>Current Rate: {conversionRate}</div>
+          <div style={{ textAlign: 'center' }}>Current Rate: <br/>{formatCurrency(conversionRate as number, to)}</div>
         </div>
         &nbsp;
         <h2>{to}</h2>
       </div>
       <div>
-        <h2>{formatCurrency(amountToConvert, from)}</h2>
+        <h2>{formatCurrency(amountToConvert as number, from)}</h2>
         &nbsp;
         <div>⇌</div>
         &nbsp;
-        <h2>{formatCurrency(resultingAmount, to)}</h2>
+        <h2>{formatCurrency(resultingAmount as number, to)}</h2>
       </div>
     </div>
   )
