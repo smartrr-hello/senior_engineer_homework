@@ -10,7 +10,7 @@ import RateHistory from '../components/RateHistory';
 import { useInterval } from '../hooks';
 import styles from '../styles/Home.module.scss'
 
-const ONE_HOUR_IN_MS = 1000 * 10;
+const ONE_HOUR_IN_MS = 1000 * 60 * 60;
 
 export async function getServerSideProps({ req, res }: GetServerSidePropsContext) {
   const response = await fetch('http://localhost:3000/api/latest');
