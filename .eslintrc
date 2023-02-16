@@ -1,0 +1,59 @@
+{
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "moduleNameMapper": {
+    "\\.(css|scss|less)$": "identity-obj-proxy"
+  },
+  "extends":[
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:import/errors",
+    "plugin:react/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:prettier/recommended",
+    "prettier/react"
+  ],
+  "plugins": [
+    "react-hooks"
+  ],
+  "rules": {
+      "react-hooks/exhaustive-deps": "off",
+      "react/prop-types": "off",
+      "max-len": ["error", {"code": 150, "ignoreUrls": true}],
+      "default-param-last": ["error"],
+      "dot-notation": "error",
+      "eqeqeq": ["error", "always"],
+      "func-name-matching": "error",
+      "func-style": ["error", "declaration", { "allowArrowFunctions": true }],
+      "max-lines-per-function": ["error", { "max": 10, "skipBlankLines": true, "skipComments": true }],
+      "max-params": ["error", 4],
+      "multiline-comment-style": ["error", "starred-block"],
+      "yoda": ["error", "never"],
+      "no-bitwise": "error",
+      "no-console": ["error", { "allow": ["warn", "error", "info"] }],
+      "no-new-func": "error",
+      "no-new-wrappers": "error",
+      "no-sequences": "error",
+      "no-unused-expressions": ["error", { "allowShortCircuit": true }],
+      "no-useless-concat": "error",
+      "no-useless-rename": "error",
+      "no-var": "error",
+      "prefer-const": "error",
+      "prefer-destructuring": "error",
+      "require-await": "error",
+      "prefer-spread": "error",
+      "sort-imports": ["error", {
+        "memberSyntaxSortOrder": ["none",  "single", "multiple", "all"],
+        "allowSeparatedGroups": false
+      }],
+      "sort-vars": "error",
+      "spaced-comment": "error",
+      "comma-style": ["error", "last"],
+      "no-extra-parens": "error",
+      "no-multi-spaces": "error",
+      "no-multiple-empty-lines": "error"
+  }
+}
